@@ -29,9 +29,9 @@ struct btree * insert(struct btree * node, int data)
 	}
 	else
 	{
-		if(node->data > data)
+		if(node->data >= data)
 		{
-			root->left = insert(node->left, data);
+			node->left = insert(node->left, data);
 		}
 		else
 		{
@@ -43,11 +43,7 @@ struct btree * insert(struct btree * node, int data)
 
 void preorder(struct btree * node)
 {
-	if(node == NULL)
-	{
-		return;
-	}
-	else
+	if(node)
 	{
 		cout<<node->data<<" ";
 		preorder(node->left);
