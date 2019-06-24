@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 #include<algorithm>
+#include<queue>
 using namespace std;
+queue <struct btree *> que;
 struct btree
 {
 	int data;
@@ -69,6 +71,26 @@ void inorder(struct btree * node)
 		inorder(node->right);
 	}
 }
+
+void levelTraversal(struct btree * node)
+{
+	que.push(node);
+	struct btree * temp = que.front();
+	while(!que.empty())
+	{
+		temp = que.front();
+		cout<<temp->data<<" ";
+		if(temp->left)
+		{
+			que.push(temp->left);
+		}
+		if(temp->right)
+		{
+			que.push(temp->right);
+		}
+		que.pop();
+	}
+}
 int main()
 {
 	root = NULL;
@@ -83,6 +105,7 @@ int main()
 		cout<<"b: For pre-order traversal"<<endl;
 		cout<<"c: For postorder traversal"<<endl;
 		cout<<"d: For inorder traversal"<<endl;
+		cout<<"e: For Level Order Traversal"<<endl;
 		cout<<"x: to quit"<<endl;;
 		cin>>ch;
 		switch(ch)
@@ -108,6 +131,12 @@ int main()
 			case 'd':
 			{
 				inorder(root);
+				cout<<endl;
+				break;
+			}
+			case 'e':
+			{
+				levelTraversal(root);
 				cout<<endl;
 				break;
 			}
