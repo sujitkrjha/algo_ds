@@ -91,6 +91,18 @@ void levelTraversal(struct btree * node)
 		que.pop();
 	}
 }
+
+int maxDepth(struct btree * node)
+{
+	if(node == NULL)
+		return 0;
+	int lheight = maxDepth(node->left);
+	int rheight = maxDepth(node->right);
+	if(lheight > lheight)
+		return lheight + 1;
+	else
+		return rheight + 1;
+}
 int main()
 {
 	root = NULL;
@@ -106,6 +118,7 @@ int main()
 		cout<<"c: For postorder traversal"<<endl;
 		cout<<"d: For inorder traversal"<<endl;
 		cout<<"e: For Level Order Traversal"<<endl;
+		cout<<"f: For Max Depth"<<endl;
 		cout<<"x: to quit"<<endl;;
 		cin>>ch;
 		switch(ch)
@@ -138,6 +151,12 @@ int main()
 			{
 				levelTraversal(root);
 				cout<<endl;
+				break;
+			}
+			case 'f':
+			{
+				int height = maxDepth(root);
+				cout<<"Height of tree is: "<<height<<endl;
 				break;
 			}
 			default:
