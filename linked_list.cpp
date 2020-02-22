@@ -16,7 +16,7 @@ nodePtr newNode(nodePtr root, int val)
 	cout<<temp->data<<endl;
 	return temp;
 }
-//Insert a new node with value val at the end of the linked list.
+//Insert a new node with value = val, at the end of linked list.
 nodePtr insertEnd(nodePtr root, int val)
 {
 	if(root == NULL)
@@ -25,23 +25,43 @@ nodePtr insertEnd(nodePtr root, int val)
 		root->next = insertEnd(root->next,val);
 	return root;
 }
+//Insert a new node with value = val, at the start of linked list.
+nodePtr insertBeggining(nodePtr root, int val)
+{
+	if(root == NULL)
+		return newNode(root, val);
+	else
+	{
+		nodePtr temp = new node();
+		temp = newNode(temp, val);
+		temp->next = root;
+		root = temp;
+		return root;
+	}
+
+}
 //Print linked list from start to end.
 void printList(nodePtr root)
 {
 	if(root == NULL)
 		return;
 	else
+	{
+		cout<<root->data<<" ";
 		printList(root->next);
+	}
 }
 int main()
 {
-	nodePtr root = NULL;
+	nodePtr root =new node();
+	root = NULL;
 	int t,val;
 	do
 	{
-		cout<<"Select the action to be performed:"<<endl;
-		cout<<"Enter 1 to add element at end."<<endl;
-		cout<<"Enter 2 to print linked list."<<endl;
+		cout<<"******************Select the action to be performed*************************"<<endl;
+		cout<<"1) Add element at end."<<endl;
+		cout<<"2) Add element at beggining."<<endl;
+		cout<<"3) Print linked list."<<endl;
 		cout<<"Enter other to exit from program."<<endl;
 		cin>>t;
 		switch(t)
@@ -55,6 +75,13 @@ int main()
 			}
 			case(2):
 			{
+				cout<<"Enter the number to insert at beggining: ";
+				cin>>val;
+				root = insertBeggining(root, val);
+				break;
+			}
+			case(3):
+			{
 				cout<<"Linked list: ";
 				printList(root);
 				cout<<endl;
@@ -66,6 +93,6 @@ int main()
 				break;
 			}
 		}
-	}while(t == 1 || t==2);
+	}while(t == 1 || t==2 || t==3);
 	return 0;
 }
