@@ -51,6 +51,16 @@ void printList(nodePtr root)
 		printList(root->next);
 	}
 }
+int lengthLinkedLIst(nodePtr root)
+{
+	if (root == NULL)
+		return 0;
+	else
+	{
+		int length = lengthLinkedLIst(root->next) + 1;
+		return length;
+	}
+}
 int main()
 {
 	nodePtr root =new node();
@@ -62,6 +72,7 @@ int main()
 		cout<<"1) Add element at end."<<endl;
 		cout<<"2) Add element at beggining."<<endl;
 		cout<<"3) Print linked list."<<endl;
+		cout<<"4) Print length of linked list."<<endl;
 		cout<<"Enter other to exit from program."<<endl;
 		cin>>t;
 		switch(t)
@@ -87,12 +98,17 @@ int main()
 				cout<<endl;
 				break;
 			}
+			case(4):
+			{
+				cout<<"Length of linked list is: "<<lengthLinkedLIst(root)<<endl;
+				break;
+			}
 			default:
 			{
 				cout<<"Exiting program"<<endl;
 				break;
 			}
 		}
-	}while(t == 1 || t==2 || t==3);
+	}while(t>0 && t<5);
 	return 0;
 }
