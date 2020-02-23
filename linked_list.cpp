@@ -40,6 +40,15 @@ nodePtr insertBeggining(nodePtr root, int val)
 	}
 
 }
+nodePtr insertAtPosition(nodePtr root, int val, int pos)
+{
+	if(pos == 0)
+	{
+		nodePtr temp = new node();
+		temp = newNode(temp, val);
+		
+	}
+}
 //Print linked list from start to end.
 void printList(nodePtr root)
 {
@@ -65,7 +74,7 @@ int main()
 {
 	nodePtr root =new node();
 	root = NULL;
-	int t,val;
+	int t,val,pos;
 	do
 	{
 		cout<<"******************Select the action to be performed*************************"<<endl;
@@ -101,6 +110,18 @@ int main()
 			case(4):
 			{
 				cout<<"Length of linked list is: "<<lengthLinkedLIst(root)<<endl;
+				break;
+			}
+			case(4):
+			{
+				cout<<"Position of insertion: ";
+				cin>>pos;
+				cout<<"Enter the number to be inserted: ";
+				cin>>val;
+				if(pos > lengthLinkedLIst(root) || pos < 1)
+					cout<<"Error: position entered is out of range"<<endl;
+				else
+					root = insertAtPosition(root,val,pos);
 				break;
 			}
 			default:
