@@ -98,7 +98,7 @@ int maxDepth(struct btree * node)
 		return 0;
 	int lheight = maxDepth(node->left);
 	int rheight = maxDepth(node->right);
-	if(lheight > lheight)
+	if(lheight > rheight)
 		return lheight + 1;
 	else
 		return rheight + 1;
