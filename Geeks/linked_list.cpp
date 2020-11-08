@@ -20,3 +20,19 @@ int GetNthNode(struct node* head, int k){
         return head->data;
     return GetNth(head->next,k-1);
 }
+struct node* reverseList(struct node *head)
+{
+    struct node* curr = head;
+    struct node* prev = NULL;
+    struct node* next;
+    while(curr!=NULL){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+        
+    }
+    head = prev;
+    return head;
+    
+}
