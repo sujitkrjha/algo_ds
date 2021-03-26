@@ -4,11 +4,13 @@
 // Negative cycles are those cycles whose weights sum is -ve.
 // We cannot find a shortest path for undirected -ve edge weight graph.
 // Exterior loop runs for v-1 times where v is the number of vertices.
+// Worst time complexity O(V*E).
+// Best Time complexity O(E).
 
 #include<bits/stdc++.h>
 #include<algorithm>
 #include<vector>
-#define MAX_VERTICES 1010
+#define MAX_VERTICES 10010
 using namespace std;
 
 vector<int> graph[MAX_VERTICES];
@@ -62,8 +64,12 @@ int main(){
 		i++;
 	}
 	bellmond_ford(vertices,edges);
-	cin>>destination;
-	cout<<dis[destination]<<endl;
+	for(int i=2;i<=n;i++)
+	{
+		dcout<<is[i]<<" ";
+	}
+	// cin>>destination;
+	// cout<<dis[destination]<<endl;
 	return 0;
 }
 
